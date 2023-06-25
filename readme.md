@@ -46,3 +46,15 @@
     }
 
 ```
+
+#### CRIANDO ALUNO
+
+```
+{
+    "nome": "nome_aluno",
+    "rg": "rg_aluno",
+    "cpf": "cpf_aluno",
+    "data_nascimento": "YYYY-MM-DD",
+}
+
+```
