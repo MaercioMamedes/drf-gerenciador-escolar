@@ -33,5 +33,23 @@ def criando_cursos(quantidade_de_cursos):
         c.save()
 
 
-criando_alunos(200)
-criando_cursos(5)
+def criando_matriculas(curso_por_aluno):
+
+    alunos = Aluno.objects.all()
+    cursos = Curso.objects.all()
+    horarios = ('M', 'T', 'N')
+    
+    for aluno in alunos:
+        for i in range(curso_por_aluno):
+            curso = random.choices(cursos)[0]
+            if curso not in Matricula.objects.filter(aluno_id=aluno.id):
+                print(curso)
+                Matricula.objects.create(
+                    aluno=aluno,
+                    curso=curso,
+                    periodo=random.choice(horarios)
+                )
+
+# criando_alunos(200)
+# criando_cursos(5)
+criando_matriculas(3)
