@@ -24,3 +24,12 @@ class AlunosViewSet(viewsets.ModelViewSet):
             serializer.save()
             response = get_location(serializer, request)
             return response
+        
+    def update(self, request, *args, **kwargs):
+
+        return super().update(request, *args, **kwargs)
+    
+    def partial_update(self, request, *args, **kwargs):
+        serializer = self.get_serializer_class()
+        print(request.data)
+        return super().partial_update(request, *args, **kwargs)
