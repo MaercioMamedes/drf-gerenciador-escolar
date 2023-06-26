@@ -2,11 +2,26 @@
 ## CRUD em Python Utilizando Django Rest Framework
 
 
+| :placard: Vitrine.Dev |                                         |
+| --------------------- | --------------------------------------- |
+| :sparkles: Nome       | **Gerenciador escolar**                 |
+| :label: Tecnologias   | python, django, django rest, postgresql |
+| :rocket: URL          |                                         |
+| :fire: Desafio        |                                         |
+
+<!-- Inserir imagem com a #vitrinedev ao final do link -->
+![](https://via.placeholder.com/1200x500.png?text=imagem+lindona+do+meu+projeto#vitrinedev)
+
+## Detalhes do projeto
+
+
+
+
 ### Endpoints
 
 
 |               URI               |    MÉTODO    |                      RECURSO                       |
-|:-------------------------------:|:------------:|:--------------------------------------------------:|
+| :-----------------------------: | :----------: | :------------------------------------------------: |
 |             /alunos             |     GET      |               lista todos os alunos                |
 |             /alunos             |     POST     |                  Cria novo aluno                   |
 |      /alunos/{ aluno_id }       |     GET      |                   retorna aluno                    |
