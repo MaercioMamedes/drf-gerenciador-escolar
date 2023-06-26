@@ -1,4 +1,4 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, filters
 from escola.models import Curso
 from escola.serializers import CursoSerializer
 from escola.helpers import get_location
@@ -10,6 +10,9 @@ class CursosViewSet(viewsets.ModelViewSet):
 
     queryset = Curso.objects.all()
     serializer_class = CursoSerializer
+    filter_backends = [filters.OrderingFilter, filters.SearchFilter]
+    search_field = ['codigo_curso', 'descricao']
+    ordering = ['descricao', 'id']
 
     def create(self, request, *args, **kwargs):
         serializer = self.serializer_class(data=request.data)

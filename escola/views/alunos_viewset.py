@@ -1,4 +1,5 @@
 from rest_framework import viewsets
+from rest_framework import filters
 from rest_framework.response import Response
 from rest_framework import status
 from escola.models import Aluno
@@ -10,6 +11,9 @@ class AlunosViewSet(viewsets.ModelViewSet):
     """Exibindo todos os alunos e alunas"""
 
     queryset = Aluno.objects.all()
+    filter_backends = [filters.OrderingFilter, filters.SearchFilter] # customizar filtro
+    ordering_fields = ['nome','id']
+    search_fields = ['nome', 'cpf', 'rg'] # implementar método para tornar a busca mais otimizada
 
     def get_serializer_class(self):
         if self.request.version == 'v2':
