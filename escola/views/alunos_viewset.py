@@ -1,15 +1,14 @@
 from rest_framework import viewsets
 from rest_framework import filters
-from rest_framework.response import Response
-from rest_framework import status
 from escola.models import Aluno
 from escola.serializers import AlunoSerializerV2, AlunoSerializer
 from escola.helpers import get_location
 
 
 class AlunosViewSet(viewsets.ModelViewSet):
-    """Exibindo todos os alunos e alunas"""
+    """métodos de acesso aos recursos da Classe Aluno"""
 
+    http_method_names = ['get', 'post', 'put', 'patch', 'delete']
     queryset = Aluno.objects.all()
     filter_backends = [filters.OrderingFilter, filters.SearchFilter] # customizar filtro
     ordering_fields = ['nome','id']
@@ -37,3 +36,4 @@ class AlunosViewSet(viewsets.ModelViewSet):
         serializer = self.get_serializer_class()
         print(request.data)
         return super().partial_update(request, *args, **kwargs)
+    

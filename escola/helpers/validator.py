@@ -6,10 +6,21 @@ def cpf_valido(numero_do_cpf):
     return cpf.validate(numero_do_cpf)
 
 def nome_valido(nome):
-    return nome.isalpha()
+    sliced_name = nome.split()
+    for word in sliced_name:
+        for char in word:
+            if (not char.isalpha()) and ( not char == ' '):
+                return False
+    
+    return True
 
 def rg_valido(numero_do_rg):
-    return len(numero_do_rg) == 9
+
+    for char in numero_do_rg:
+        if char.isalpha():
+            return False
+
+    return True
 
 def celular_valido(numero_celular):
     """Verifica se o  celular é valido (11 91234-1234)"""
