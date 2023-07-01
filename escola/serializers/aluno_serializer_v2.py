@@ -27,9 +27,10 @@ class AlunoSerializerV2(serializers.ModelSerializer):
         
         
 
-        if not lista_erros:
-            print('asdas')
-            return attrs
+        if  lista_erros:
+
+            raise   serializers.ValidationError(lista_erros)
         else:
-            # print(lista_erros)
-            raise serializers.ValidationError(lista_erros)
+
+            return attrs
+        

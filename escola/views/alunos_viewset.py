@@ -3,6 +3,8 @@ from rest_framework import filters
 from escola.models import Aluno
 from escola.serializers import AlunoSerializerV2, AlunoSerializer
 from escola.helpers import get_location
+from rest_framework.response import Response
+from rest_framework import status
 
 
 class AlunosViewSet(viewsets.ModelViewSet):
@@ -23,10 +25,12 @@ class AlunosViewSet(viewsets.ModelViewSet):
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer_class()
         serializer = serializer(data=request.data)
-        if serializer.is_valid(self):
+        if serializer.is_valid():
             serializer.save()
             response = get_location(serializer, request)
             return response
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         
     def update(self, request, *args, **kwargs):
 

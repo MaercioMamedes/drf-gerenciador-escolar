@@ -9,16 +9,19 @@ class AlunoSerializer(serializers.ModelSerializer):
         extra_kwargs = {'id': {'read_only': True}}
 
     def validate(self, attrs):
-
+        lista_erros = {}
         print('passou')
         if not nome_valido(attrs['nome']):
-            raise serializers.ValidationError({'nome':'O campo nome não pode conter caracteres numéricos ou especiais'})
+            lista_erros['nome'] = 'O campo nome não pode conter caracteres numéricos ou especiais'
     
         if not rg_valido(attrs['rg']):
-            raise serializers.ValidationError('RG inválido')
+            lista_erros['rg'] = 'rg inválido'
         
         if not cpf_valido(attrs['cpf']):
-            raise serializers.ValidationError('CPF inválido')
+            lista_erros['cpf'] = 'CPF inválido'
+        
+        if lista_erros:
+            raise serializers.ValidationError(lista_erros)
   
         return attrs
         
