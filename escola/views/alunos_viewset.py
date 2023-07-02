@@ -28,16 +28,6 @@ class AlunosViewSet(viewsets.ModelViewSet):
             return AlunoSerializerV2
         else:
             return AlunoSerializer
-
-
-    def retrieve(self, request, *args, **kwargs):
-        aluno = Aluno.objects.get(pk=kwargs['pk'])
-        aluno.foto = aluno.foto.url
-        serializer = self.get_serializer(data=model_to_dict(aluno))
-        serializer.is_valid()
-        
-        return Response(serializer.data
-        )
     
 
     def create(self, request, *args, **kwargs):
