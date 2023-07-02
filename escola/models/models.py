@@ -6,6 +6,7 @@ class Aluno(models.Model):
     cpf = models.CharField(max_length=11)
     data_nascimento = models.DateField()
     celular = models.CharField(max_length=13, default='')
+    foto = models.ImageField(upload_to='foto-aluno', default='', blank=True)
 
     def __str__(self):
         return self.nome

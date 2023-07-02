@@ -1,6 +1,7 @@
 # Gerenciador Escolar
 ## CRUD em Python Utilizando Django Rest Framework
 
+#### Este projeto é um sistema de gerenciamento escolar que permite cadastrar, consultar, atualizar e excluir alunos, cursos e matrículas. O sistema utiliza o framework Django REST para criar uma API RESTful que expõe os recursos do modelo de dados. O sistema utiliza o banco de dados PostgreSQL para armazenar as informações. 
 
 | :placard: Vitrine.Dev |                                         |
 | --------------------- | --------------------------------------- |

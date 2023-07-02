@@ -5,7 +5,7 @@ from escola.helpers import nome_valido ,cpf_valido, rg_valido
 class AlunoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Aluno
-        fields = ['id', 'nome', 'rg', 'cpf', 'data_nascimento']
+        fields = ['id', 'nome', 'rg', 'cpf', 'data_nascimento', 'foto']
         extra_kwargs = {'id': {'read_only': True}}
 
     def validate(self, attrs):
