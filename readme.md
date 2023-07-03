@@ -6,7 +6,7 @@
 O desenvolvimento desse projeto está sendo realizado a partir das resolução das atividades da trilha de formação [Django REST APIs: crie aplicações REST em Python](https://cursos.alura.com.br/formacao-django-rest) da escola de tecnologia [Alura](https://www.alura.com.br/sobre). A estrutura básica, e principais funcionalidades foram proposta nas atividades, porém até a conclusão desse projeto, será implementado diversas outras que não estavam prevista no escopo da trilha de formação.
 
 
-## Objetivos
+## :dart: Objetivos
 
 Esse projeto tem como objetivo implementar técnicas de desenvolvimento de tecnologia para web, utilizando a linguagem Python e o framework Django.
 
@@ -20,21 +20,25 @@ Esse projeto tem como objetivo implementar técnicas de desenvolvimento de tecno
 <!-- Inserir imagem com a #vitrinedev ao final do link -->
 ![](https://github.com/MaercioMamedes/drf-gerenciador-escolar/blob/master/docs/images/capa_vitrine-dev.png#vitrinedev)
 
-## Funcionalidades da aplicação
+## :pencil: Funcionalidades da aplicação
 
 - :arrow_forward: -----> Em Desenvolvimento
 - :x: -----> Não implementado
 - :heavy_check_mark: -----> Implementado
 
-| ITEM  |      ATIVO      | FUNCIONALIDADE |                        DESCRIÇÃO                        |
-| :---: | :-------------: | :------------: | :-----------------------------------------------------: |
-|   1   | :arrow_forward: |   CRUD Aluno   |   Criação, leitura, edição e exclusão da classe Aluno   |
-|   2   | :arrow_forward: |   CRUD Curso   |   Criação, leitura, edição e exclusão da classe Curso   |
-|   3   |       :x:       | CRUD Matrícula |   Criação, leitura, edição e exclusão da classe Curso   |
-|   4   |       :x:       | CRUD Professor | Criação, leitura, edição e exclusão da classe Professor |
+| ITEM  |      ATIVO      |     FUNCIONALIDADE     |                               DESCRIÇÃO                               |
+| :---: | :-------------: | :--------------------: | :-------------------------------------------------------------------: |
+|   1   | :arrow_forward: |       CRUD Aluno       |          Criação, leitura, edição e exclusão da classe Aluno          |
+|   2   | :arrow_forward: |       CRUD Curso       |          Criação, leitura, edição e exclusão da classe Curso          |
+|   3   |       :x:       |     CRUD Matrícula     |        Criação, leitura, edição e exclusão da classe Matrícula        |
+|   4   |       :x:       |     CRUD Professor     |        Criação, leitura, edição e exclusão da classe Professor        |
+|   5   |       :x:       |    CRUD Funcionario    |       Criação, leitura, edição e exclusão da classe Funcionário       |
+|   6   |       :x:       |    Busca de Alunos     |                    Buscar objetos da classe alunos                    |
+|   7   |       :x:       | Validação de requisção | Validação das entradas de dados para criação e atualização de objetos |
 
 
-## Building
+
+## :computer: Building
 
 * Versão das principais tecnologias utilizadas:
 
@@ -57,7 +61,7 @@ DATABASES = {
   * as dependências necessárias para rodar o projeto, estão listadas no arquivo requirements.txt
 * rode o comando `python manage.py runserver`
 
-### Endpoints
+### :airplane: Endpoints
 
 
 |               URI               |    MÉTODO    |                      RECURSO                       |
@@ -81,7 +85,7 @@ DATABASES = {
 |  /matriculas/{ matricula_id }   |    DELETE    |                  exclui matricula                  |
 
 
-### Estruturas de dados
+### :closed_lock_with_key: Estruturas de dados
 
 #### CRIANDO CURSO
 
