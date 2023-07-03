@@ -5,6 +5,7 @@ from escola.serializers import AlunoSerializer
 from escola.helpers import get_location
 from rest_framework.response import Response
 from rest_framework import status
+from django.shortcuts import get_object_or_404
 
 
 class AlunosViewSet(viewsets.ModelViewSet):
@@ -27,12 +28,20 @@ class AlunosViewSet(viewsets.ModelViewSet):
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         
-    def update(self, request, *args, **kwargs):
 
-        return super().update(request, *args, **kwargs)
-    
+    def update(self, request, *args, **kwargs):
+        aluno = get_object_or_404(Aluno, pk=kwargs['pk'])
+        serializer = self.get_serializer(data=request.data)
+        if serializer.is_valid():
+            serializer.update(aluno, serializer.validated_data)
+
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+ 
     def partial_update(self, request, *args, **kwargs):
-        serializer = self.get_serializer_class()
-        print(request.data)
-        return super().partial_update(request, *args, **kwargs)
-    
+        print('passou')
+        kwargs['partial'] = True
+        return self.update(request, *args, **kwargs)

@@ -7,4 +7,4 @@
 ### 03-07-2023
 
 *  14:55 - Customizar busca com filtros
-*  
+*  19:32 - concluir CRUD da classe Aluno
