@@ -1,15 +1,10 @@
 from rest_framework import viewsets
 from rest_framework import filters
-from rest_framework.authentication import BaseAuthentication
-from rest_framework.permissions import IsAuthenticated
 from escola.models import Aluno
-from escola.serializers import AlunoSerializerV2, AlunoSerializer
+from escola.serializers import AlunoSerializer
 from escola.helpers import get_location
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework.throttling import AnonRateThrottle
-from rest_framework.permissions import DjangoModelPermissions
-from django.forms.models import model_to_dict
 
 
 class AlunosViewSet(viewsets.ModelViewSet):
@@ -20,15 +15,7 @@ class AlunosViewSet(viewsets.ModelViewSet):
     filter_backends = [filters.OrderingFilter, filters.SearchFilter] # customizar filtro
     ordering_fields = ['nome','id']
     search_fields = ['nome', 'cpf', 'rg'] # implementar método para tornar a busca mais otimizada
-
-
-
-    def get_serializer_class(self):
-        if self.request.version == 'v2':
-            return AlunoSerializerV2
-        else:
-            return AlunoSerializer
-    
+    serializer_class = AlunoSerializer    
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer_class()
