@@ -15,7 +15,7 @@ class AlunosViewSet(viewsets.ModelViewSet):
     queryset = Aluno.objects.all()
     filter_backends = [filters.OrderingFilter, filters.SearchFilter] # customizar filtro
     ordering_fields = ['nome','id']
-    search_fields = ['nome', 'cpf', 'rg'] # implementar método para tornar a busca mais otimizada
+    search_fields = ['nome', 'cpf', 'rg']  # implementar método para tornar a busca mais otimizada
     serializer_class = AlunoSerializer    
 
     def create(self, request, *args, **kwargs):
@@ -27,7 +27,6 @@ class AlunosViewSet(viewsets.ModelViewSet):
             return response
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-        
 
     def update(self, request, *args, **kwargs):
         aluno = get_object_or_404(Aluno, pk=kwargs['pk'])

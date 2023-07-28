@@ -6,7 +6,6 @@ from escola.helpers import nome_valido ,cpf_valido, rg_valido, celular_valido
 class AlunoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Aluno
-        fields = '__all__'
         fields = ['id', 'nome', 'rg', 'cpf', 'data_nascimento', 'celular']
         extra_kwargs = {'id': {'read_only': True}}
 
@@ -24,12 +23,10 @@ class AlunoSerializer(serializers.ModelSerializer):
         
         if not celular_valido(attrs['celular']):
             lista_erros['celular'] = 'formato do número do celular inválido'
-        
-        
 
-        if  lista_erros:
+        if lista_erros:
 
-            raise   serializers.ValidationError(lista_erros)
+            raise serializers.ValidationError(lista_erros)
         else:
 
             return attrs

@@ -1,10 +1,9 @@
 from rest_framework.test import APITestCase
 from rest_framework import status
-from rest_framework.test import APIClient, force_authenticate
+from rest_framework.test import APIClient
 from django.urls import reverse
 from django.contrib.auth.models import User
 from escola.models import Aluno
-
 
 
 class AlunoTestCase(APITestCase):
@@ -20,7 +19,6 @@ class AlunoTestCase(APITestCase):
         self.client = APIClient()
 
         self.superuser = User.objects.create_superuser(username='maercio', password='2325')
-
 
     def test_get_aluno(self):
         self.client.force_authenticate(user=self.superuser)
