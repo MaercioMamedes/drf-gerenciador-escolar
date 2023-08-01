@@ -8,3 +8,8 @@
 
 *  14:55 - Customizar busca com filtros
 *  19:32 - concluir CRUD da classe Aluno
+
+### 30-07-2023
+
+
+* 12:09 - Implementar método para validar upload de foto

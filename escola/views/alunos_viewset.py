@@ -33,14 +33,21 @@ class AlunosViewSet(viewsets.ModelViewSet):
         serializer = self.get_serializer(data=request.data)
         if serializer.is_valid():
             serializer.update(aluno, serializer.validated_data)
-
+            instance = self.get_object()
+            serializer = self.get_serializer(instance)
             return Response(serializer.data, status=status.HTTP_200_OK)
         
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
- 
     def partial_update(self, request, *args, **kwargs):
-        print('passou')
-        kwargs['partial'] = True
-        return self.update(request, *args, **kwargs)
+        aluno = get_object_or_404(Aluno, pk=kwargs['pk'])
+        serializer = self.get_serializer(data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.update(aluno, serializer.validated_data)
+            instance = self.get_object()
+            serializer = self.get_serializer(instance)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
