@@ -9,6 +9,10 @@ class Aluno(models.Model):
     celular = models.CharField(max_length=13, default='')
     foto = models.ImageField(upload_to='foto-aluno', default='', blank=True, null=True)
 
+    def delete(self, using=None, keep_parents=False):
+        self.foto.delete(save=False)
+        super().delete()
+
     def __str__(self):
         return self.nome
 

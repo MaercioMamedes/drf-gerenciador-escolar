@@ -7,7 +7,10 @@ class AlunoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Aluno
         fields = ['id', 'nome', 'rg', 'cpf', 'data_nascimento', 'celular','foto']
-        extra_kwargs = {'id': {'read_only': True}}
+        extra_kwargs = {
+            'id': {'read_only': True},
+            'foto': {'read_only': True},
+            }
 
     def validate(self, attrs):
         lista_erros = {}

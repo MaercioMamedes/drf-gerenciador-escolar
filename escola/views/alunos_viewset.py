@@ -6,6 +6,7 @@ from escola.helpers import get_location
 from rest_framework.response import Response
 from rest_framework import status
 from django.shortcuts import get_object_or_404
+import os
 
 
 class AlunosViewSet(viewsets.ModelViewSet):
@@ -51,3 +52,8 @@ class AlunosViewSet(viewsets.ModelViewSet):
 
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def destroy(self, request, *args, **kwargs):
+        instance = self.get_object()
+        instance.delete()
+        return Response('objeto deletado', status=status.HTTP_200_OK)
