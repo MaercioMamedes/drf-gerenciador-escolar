@@ -33,10 +33,19 @@ class AlunosViewSet(viewsets.ModelViewSet):
         aluno = get_object_or_404(Aluno, pk=kwargs['pk'])
         serializer = self.get_serializer(data=request.data)
         if serializer.is_valid():
-            serializer.update(aluno, serializer.validated_data)
-            instance = self.get_object()
-            serializer = self.get_serializer(instance)
-            return Response(serializer.data, status=status.HTTP_200_OK)
+            if not serializer.validated_data['foto']:
+                serializer.validated_data['foto'] = aluno.foto
+                instance = self.get_object()
+                serializer.update(instance, serializer.validated_data)
+                serializer = self.get_serializer(instance)
+                return Response(serializer.data, status=status.HTTP_200_OK)
+
+            else:
+                instance = self.get_object()
+                instance.foto.delete(save=False)
+                serializer.update(instance, serializer.validated_data)
+                serializer = self.get_serializer(instance)
+                return Response(serializer.data, status=status.HTTP_200_OK)
         
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -45,10 +54,25 @@ class AlunosViewSet(viewsets.ModelViewSet):
         aluno = get_object_or_404(Aluno, pk=kwargs['pk'])
         serializer = self.get_serializer(data=request.data, partial=True)
         if serializer.is_valid():
-            serializer.update(aluno, serializer.validated_data)
-            instance = self.get_object()
-            serializer = self.get_serializer(instance)
-            return Response(serializer.data, status=status.HTTP_200_OK)
+            if 'foto' not in serializer.validated_data:
+                instance = self.get_object()
+                serializer.update(instance, serializer.validated_data)
+                serializer = self.get_serializer(instance)
+                return Response(serializer.data, status=status.HTTP_200_OK)
+
+            elif serializer.validated_data['foto'] is not None:
+                instance = self.get_object()
+                instance.foto.delete(save=False)
+                serializer.update(instance, serializer.validated_data)
+                serializer = self.get_serializer(instance)
+                return Response(serializer.data, status=status.HTTP_200_OK)
+
+            else:
+                serializer.validated_data['foto'] = aluno.foto
+                instance = self.get_object()
+                serializer.update(instance, serializer.validated_data)
+                serializer = self.get_serializer(instance)
+                return Response(serializer.data, status=status.HTTP_200_OK)
 
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

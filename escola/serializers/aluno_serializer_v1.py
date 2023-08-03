@@ -9,7 +9,7 @@ class AlunoSerializer(serializers.ModelSerializer):
         fields = ['id', 'nome', 'rg', 'cpf', 'data_nascimento', 'celular','foto']
         extra_kwargs = {
             'id': {'read_only': True},
-            'foto': {'read_only': True},
+            'foto': {'read_only': False},
             }
 
     def validate(self, attrs):
